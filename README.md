@@ -1,0 +1,1 @@
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/ebf/gitpitch-ember-vs-react/master?grs=github&t=white)
