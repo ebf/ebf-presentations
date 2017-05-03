@@ -5,14 +5,6 @@
 
 ---
 
-### Client Side Frameworks
-<span style="color:gray">Common Flow</span>
-<br>
-
-![FLOW](https://www.smashingmagazine.com/wp-content/uploads/2016/01/04-client-side-rendering-opt.png)
-
----
-
 ### Basics
 Feature | EmberJS | React
 ---------- | ------------ | -------------
@@ -23,6 +15,47 @@ Type of framework | Fully fledged MVC | View layer only
 "Templating Engine" | Handlebars | JSX
 
 ---
+
+### Client Side Frameworks
+<span style="color:gray">Common Flow</span>
+<br>
+
+![FLOW](https://www.smashingmagazine.com/wp-content/uploads/2016/01/04-client-side-rendering-opt.png)
+
+---
+
+### View Layer Basics - EmberJS
+Typical Flow:
+- `router` loads `route` for given url
+- `route` loads a `model` (either from store or from backend)
+- `route` passes the model to a `controller`
+- if no `controller` for the given route is defined, ember generates a `pass-through controller` on the fly
+- a `controller` may add additional `properties` (think `isToggled`) and `actions` (think `doToggle()`), which are invoked by the user
+- `route` renders a `template` into the `{{outlet}}` of its parent route's template
+- a `template` may use mulitple `components` to make up the UI, passing data down as `properties`
+- user interactions are real events and bubble up, until a `controller` or `route` handles the `action`
+
+---
+
+### View Layer Basics - React
+- Components can be represented as functions or ES6 classes
+```js
+function Person(props) {
+  return (
+    <div>{props.person.name}</div>
+  );
+}
+```
+```js
+class Person extends React.Component {
+  render() {
+    return (
+      <div>{this.props.person.name}</div>
+    );
+  }
+}
+ReactDOM.render(<Person person={jsonResponse.person}/>, document.getElementBiId('root'));
+```
 
 ### View Layer Concepts
 #### Binding
@@ -42,40 +75,6 @@ Must use this.set(‘obj’, obj) and this.get(‘obj’) | Must use this.setSta
 Actions are real events and bubble up | “Actions” must be passed in as props and are plain callbacks
 
 ---
-
-### View Layer Basics - EmberJS
-Typical Flow:
-- `router` loads `route` for given url
-- `route` loads a `model` (either from store or from backend)
-- `route` passes the model to a `controller`
-- if no `controller` for the given route is defined, ember generates a `pass-through controller` on the fly
-- a `controller` may add additional `properties` (think `isToggled`) and `actions` (think `doToggle()`), which are invoked by the user
-- `route` renders a `template` into the `{{outlet}}` of its parent route's template
-- a `template` may use mulitple `components` to make up the UI, passing data down as `properties`
-- user interactions are real events and bubble up, until a `controller` or `route` handles the `action`
-
----
-
-### View Layer Basics - React
-- Idea: by looking at the source, you know what is rendered if you know the state
-- Components can be represented as functions or ES6 classes
-```js
-function Person(props) {
-  return (
-    <div>{props.person.name}</div>
-  );
-}
-```
-```js
-class Person extends React.Component {
-  render() {
-    return (
-      <div>{this.props.person.name}</div>
-    );
-  }
-}
-ReactDOM.render(<Person person={jsonResponse.person}/>, document.getElementBiId('root'));
-```
 
 ### View Layer Examples
 #### Conditionals - HBS
