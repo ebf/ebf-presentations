@@ -38,7 +38,7 @@ Typical Flow:
 ---
 
 ### View Layer Basics - React
-- Components can be represented as functions or ES6 classes
+Components can be represented as functions or ES6 classes
 ```js
 function Person(props) {
   return (
