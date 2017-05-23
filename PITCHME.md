@@ -263,6 +263,7 @@ ReactDOM.render(
 - Items in lists must have a key (in order for the rendering to be performant)
 - requires lots of extensions to be useful, react-router, react-redux...
 
+---
 
 ### Ideas for other presentations
 - ES2015, ES2016, ES2017 enhancements
