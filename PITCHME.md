@@ -146,10 +146,9 @@ ReactDOM.render(
 #### Iterating - JSX - recommended way
 ```js
 function ListItems(props){
-    const persons = props.persons;
-    const listItems = persons.map((person) => {
-        return <li>{person.name}</li>
-    });
+    const listItems = props.persons.map(person => 
+        <li>{person.name}</li>
+    );
     return (
         <ul>{listItems}</ul>
     )
@@ -166,7 +165,7 @@ function ListItem(props){
 }
 return (
     <ul>
-    {persons.map((person)=>
+    {persons.map(person =>
         <ListItem key="{person.id}" name={person.name}/>
     )}
     </ul>
@@ -213,9 +212,11 @@ generated | by hand | usually by react redux
 ---
 
 ### React Data Flow
-#### Reducers, Middleware, Store enhancers
+#### Stores, Reducers, Actions
 
-TODO
+- In Redux, all the application state is stored as a single object (the __Store__), normalized as much as possible (think of it as a DB)
+- __Actions__ are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using store.dispatch().
+- __Reducers__ are a pure functions that take the previous state and an action, and return the next state. Given the same arguments, it should calculate the next state and return it. No surprises. No side effects. No API calls. No mutations. Just a calculation.
 
 --- 
 
@@ -264,6 +265,12 @@ ReactDOM.render(
 
 
 ### Ideas for other presentations
+- ES2015, ES2016, ES2017 enhancements
+    - promises, generators, await/async
+    - property shorthand, computed property names
+    - rest parameter, spread operator, array destructuring
+    - classes, modules
+    - lodash vs new builtin methods (Object.assign, find, map, filter, each, _pluck...)
 - comparison of build tools / bundlers
     - gulp, grunt, broccoli, webpack, bower, browserify
 - comparison of package managers
